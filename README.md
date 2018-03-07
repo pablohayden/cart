@@ -55,7 +55,7 @@ Project was implemented using Java 8 and uses the Spring Boot and is tested usin
 - Spring Boot has a convenience utility that loads a default properties file from the class-path application.properities found [here](https://github.com/pablohayden/cart/tree/master/src/main/resources).
   Properties that have traditionally been maintained in separate file (persistence.xml and hibernate.cfg.xml are all now configured within the one place.
   Logging & tomcat properties can also be configured within [here](https://github.com/pablohayden/cart/tree/master/src/main/resources).
-- CartCommandLineRunner is a Spring component interface that spring will invoke at run time and basically wraps the main method of the application. It's a convenience method that supports multiple runtime instances. Found here[https://github.com/pablohayden/cart/tree/master/src/main/java/org/shopping/cart]
+- CartCommandLineRunner is a Spring component interface that spring will invoke at run time and basically wraps the main method of the application. It's a convenience method that supports multiple runtime instances. Found [here](https://github.com/pablohayden/cart/tree/master/src/main/java/org/shopping/cart)
 
 3. Note on H2 DB - The in memory database is used to prototype database integration. The H2 console is registered at http://localhost:8080/console which can be accessed to see the tables and underlying generated data schema & data.
 Entity tables are automatically generated using JPA/Hibernate create/drop table option during start up.
