@@ -11,8 +11,7 @@ import org.shopping.cart.discount.DiscountCalculatorFactory;
 import org.shopping.cart.domain.CartItem;
 import org.shopping.cart.domain.Product;
 import org.shopping.cart.domain.ShoppingCart;
-import org.shopping.cart.repository.ProductRepository;
-import org.shopping.cart.repository.ShoppingCartRepository;
+import org.shopping.cart.service.ProductService;
 import org.shopping.cart.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -28,11 +27,7 @@ import org.springframework.stereotype.Component;
 @Component
 class CartCommandLineRunner implements CommandLineRunner{
 	
-	@Autowired ShoppingCartRepository cartRepository;
-	
-	@Autowired ProductRepository productRepository;
-	
-	@Autowired ShoppingCartService shoppingService;
+	@Autowired ProductService prodService;
 	
 	@Autowired ShoppingCartService cartService;
 	
@@ -41,6 +36,9 @@ class CartCommandLineRunner implements CommandLineRunner{
 	
 	@Override
 	public void run(String... args) throws Exception {
+		
+		if(args.length == 0) throw new ShoppingCartException("You must specify command line input parameters [shoppingcartname] [item1][item2][item3]...");
+		if(args.length == 1) throw new ShoppingCartException("You must specify at least one shopping cart item [shoppingcartname] [item1][item2][item3]...");
 		
 	
 		ShoppingCart shoppingCart = getShoppingCart(args[0]);
@@ -55,14 +53,14 @@ class CartCommandLineRunner implements CommandLineRunner{
 					}
 					else {
 						
-						Optional<Product> product = productRepository.findByName(arg);
+						Product product = prodService.findByName(arg);
 						
-						if(product.isPresent()) shoppingCart.addCartItem(new CartItem(product.get()));
+						shoppingCart.addCartItem(new CartItem(product));
 		
 					}
 		}
 		
-		cartRepository.saveAndFlush(shoppingCart);
+		cartService.saveAndFlush(shoppingCart);
 		
 		DiscountCalculator discountcalculator = DiscountCalculatorFactory.getDiscountCalculator(LocalDate.now());
 		
@@ -82,9 +80,9 @@ class CartCommandLineRunner implements CommandLineRunner{
 	
 		Optional<ShoppingCart> shoppingCart = cartService.findShoppingCart(cartname);
 		
-		shoppingCart.orElse(new ShoppingCart(cartname));
+		return shoppingCart.orElse(new ShoppingCart(cartname));
 		
-		return shoppingCart.get();
+//		return shoppingCart.get();
 		
 	}
 }

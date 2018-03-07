@@ -26,5 +26,9 @@ public class ShoppingCartService {
 		
 	}
 
+	public void saveAndFlush(ShoppingCart shoppingCart) {
+		shoppingCartRepository.saveAndFlush(shoppingCart);
+	}
+
 	
 }

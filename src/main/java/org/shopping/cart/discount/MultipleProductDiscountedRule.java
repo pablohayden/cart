@@ -55,14 +55,7 @@ public class MultipleProductDiscountedRule extends DiscountRule {
 				
 				targetcartitem.setDiscountRule(this);
 			}
-		
-//			CartItem cartitem = shoppingcart.getCartList().stream().filter(c -> (c.getProduct().equals(targetdiscountedproduct) && c.isDiscountApplied())).findFirst().get();
-//			
-//			BigDecimal discountedPrice = cartitem.getProduct().getUnitPrice().multiply(BigDecimal.valueOf(targetdiscountpercentage));
-//					
-//			cartitem.setDiscountedPrice(discountedPrice, this);
-//					
-//			cartitem.setDiscountRule(this);
+
 		}
 		
 		return shoppingcart;

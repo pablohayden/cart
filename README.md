@@ -1,7 +1,5 @@
 # cart
 
-## Synopsis
-
 A small shopping cart application that accepts a number of shopping cart items and calculates totals.
 Discounts can be applied to products in the form of rules.
 
@@ -15,6 +13,17 @@ The goods that can be purchased, which are all priced in GBP, are:
 Current special offers are:
 - Apples have 10% off their normal price this week
 - Buy 2 tins of soup and get a loaf of bread for half price
+
+
+
+## Code Example
+
+/* Application can be launched using...
+
+org.shopping.cart.ShoppingCartApplication BasketName Apples Milk Bread
+
+*/
+
 
 The program should accept a list of items in the basket and output the subtotal, the special offer discounts and the final
 price.
@@ -31,15 +40,6 @@ If no special offers are applicable, the code should output:
 Subtotal: £1.30
 (no offers available)
 Total: £1.30
-
-
-## Code Example
-
-/* Application can be launched using...
-
-org.shopping.cart.ShoppingCartApplication BasketName Apples Milk Bread
-
-*/
 
 
 
