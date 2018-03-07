@@ -49,7 +49,8 @@ Project was implemented using Java 8 and uses the Spring Boot and is tested usin
 
 2. Note on the use of Spring Boot - using Spring Boot was unnecessary to fill the brief but using it means that we can quickly prototype DB integration and expose a RESTFUL web service in a very short space of time which makes this application far more useful.
 - Spring Boot initilizes the JPA using annotations.
-- Initializes all components by scanning the current classpath @
+- Initializes all components by scanning the current classpath using the @SpringBootApplication annotation.
+  This is equivalent to using @Configuration, @EnableAutoConfiguration, and @ComponentScan with their default attributes,.
 - Spring Annotations are preferred in this case as it's a relatively small application and DAO file structure helps to identify relevant spring stereotypes & JPA repositories.
 - Spring Boot has a convenience utility that loads a default properties file from the class-path application.properities. 
   Properties that have traditionally been maintained in separate file (persistence.xml and hibernate.cfg.xml are all now configured within the one place.
