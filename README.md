@@ -20,7 +20,9 @@ Current special offers are:
 
 Application can be launched using...
 
-org.shopping.cart.ShoppingCartApplication BasketName Apples Milk Bread
+[I'm an inline-style link](https://www.google.com)
+
+[org.shopping.cart.ShoppingCartApplication](https://github.com/pablohayden/cart/blob/master/src/main/java/org/shopping/cart/ShoppingCartApplication.java)
 
 
 The program should accept a list of items in the basket and output the subtotal, the special offer discounts and the final
