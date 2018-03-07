@@ -28,7 +28,7 @@ public class RulesDiscountCalculatorTest {
 	private Product appleprod = new Product(apples, BigDecimal.valueOf(1.00));
 	private Product soupprod = new Product(soup, BigDecimal.valueOf(0.65));
 	private Product breadprod = new Product(bread, BigDecimal.valueOf(0.80));
-	private Product milkprod = new Product(milk, BigDecimal.valueOf(1.30));
+//	private Product milkprod = new Product(milk, BigDecimal.valueOf(1.30));
 
 //	@Ignore
 	@Test
@@ -167,8 +167,6 @@ public class RulesDiscountCalculatorTest {
 		shoppingCart.addCartItem(new CartItem(this.breadprod));
 		shoppingCart.addCartItem(new CartItem(this.soupprod));
 		shoppingCart.addCartItem(new CartItem(this.soupprod));
-//		shoppingCart.addCartItem(new CartItem(this.appleprod));
-		
 		
 		return shoppingCart;
 	}
