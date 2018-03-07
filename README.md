@@ -1,7 +1,7 @@
-# Shopping Cart Application
+# Shopping Cart Micro Service Application
 
-A small shopping cart application that accepts a number of shopping cart items and calculates totals.
-Discounts can be applied to products in the form of rules.
+A small shopping cart application that accept exposes a REST API.
+
 
 Processing requirements
 
