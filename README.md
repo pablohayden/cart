@@ -20,9 +20,7 @@ Current special offers are:
 
 Application can be launched using...
 
-[I'm an inline-style link](https://www.google.com)
-
-[org.shopping.cart.ShoppingCartApplication](https://github.com/pablohayden/cart/blob/master/src/main/java/org/shopping/cart/ShoppingCartApplication.java)
+[org.shopping.cart.ShoppingCartApplication](https://github.com/pablohayden/cart/blob/master/src/main/java/org/shopping/cart/ShoppingCartApplication.java)  BasketName Apples Milk Bread
 
 
 The program should accept a list of items in the basket and output the subtotal, the special offer discounts and the final
@@ -52,18 +50,16 @@ Project was implemented using Java 8 and uses the Spring Boot and is tested usin
 2. Note on the use of Spring Boot - using Spring Boot was unnecessary to fill the brief but using it means that we can quickly prototype DB integration and expose a RESTFUL web service in a very short space of time which makes this application far more useful.
 - Spring Boot initilizes the JPA using annotations.
 - Initializes all components by scanning the current classpath using the @SpringBootApplication annotation.
-  This is equivalent to using @Configuration, @EnableAutoConfiguration, and @ComponentScan with their default attributes,.
+  This is equivalent to using @Configuration, @EnableAutoConfiguration, and @ComponentScan with their default attributes.
 - Spring Annotations are preferred in this case as it's a relatively small application and DAO file structure helps to identify relevant spring stereotypes & JPA repositories.
-- Spring Boot has a convenience utility that loads a default properties file from the class-path application.properities. /src/main/respources/application.properties
+- Spring Boot has a convenience utility that loads a default properties file from the class-path application.properities found [here](https://github.com/pablohayden/cart/tree/master/src/main/resources).
   Properties that have traditionally been maintained in separate file (persistence.xml and hibernate.cfg.xml are all now configured within the one place.
-  Logging & tomcat properties can also be configured within here.
-- CartCommandLineRunner is a Spring component interface that spring will invoke at run time and basically wraps the main method of the application. It's a convenience method that supports multiple runtime instances.
+  Logging & tomcat properties can also be configured within [here](https://github.com/pablohayden/cart/tree/master/src/main/resources).
+- CartCommandLineRunner is a Spring component interface that spring will invoke at run time and basically wraps the main method of the application. It's a convenience method that supports multiple runtime instances. Found here[https://github.com/pablohayden/cart/tree/master/src/main/java/org/shopping/cart]
 
 3. Note on H2 DB - The in memory database is used to prototype database integration. The H2 console is registered at http://localhost:8080/console which can be accessed to see the tables and underlying generated data schema & data.
 Entity tables are automatically generated using JPA/Hibernate create/drop table option during start up.
-Spring Boot automatically detects a number of file types from the classpath including data.sql, which contains an SQL data file to generate the product types.
-data.sql: /src/main/respources/data.sql
-
+Spring Boot automatically detects a number of file types from the classpath including data.sql, which contains an SQL data file to generate the product types found [here](https://github.com/pablohayden/cart/tree/master/src/main/resources).
 
 4. Note on Patterns - Factory/Command/Strategy pattern mix that allows us to apply different discount rules sets RuleCalculator to a shopping cart and to generate different RuleCalculator using the Factory method. Using this pattern improves our ability to introduce new discount rules, extend the code base, to isolation test discount rules and promote the single responsibility principle. 
 
