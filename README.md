@@ -52,7 +52,7 @@ Project was implemented using Java 8 and uses the Spring Boot and is tested usin
 - Initializes all components by scanning the current classpath using the @SpringBootApplication annotation.
   This is equivalent to using @Configuration, @EnableAutoConfiguration, and @ComponentScan with their default attributes,.
 - Spring Annotations are preferred in this case as it's a relatively small application and DAO file structure helps to identify relevant spring stereotypes & JPA repositories.
-- Spring Boot has a convenience utility that loads a default properties file from the class-path application.properities. 
+- Spring Boot has a convenience utility that loads a default properties file from the class-path application.properities. /src/main/respources/application.properties
   Properties that have traditionally been maintained in separate file (persistence.xml and hibernate.cfg.xml are all now configured within the one place.
   Logging & tomcat properties can also be configured within here.
 - CartCommandLineRunner is a Spring component interface that spring will invoke at run time and basically wraps the main method of the application. It's a convenience method that supports multiple runtime instances.
@@ -60,6 +60,7 @@ Project was implemented using Java 8 and uses the Spring Boot and is tested usin
 3. Note on H2 DB - The in memory database is used to prototype database integration. The H2 console is registered at http://localhost:8080/console which can be accessed to see the tables and underlying generated data schema & data.
 Entity tables are automatically generated using JPA/Hibernate create/drop table option during start up.
 Spring Boot automatically detects a number of file types from the classpath including data.sql, which contains an SQL data file to generate the product types.
+data.sql: /src/main/respources/data.sql
 
 
 4. Note on Patterns - Factory/Command/Strategy pattern mix that allows us to apply different discount rules sets RuleCalculator to a shopping cart and to generate different RuleCalculator using the Factory method. Using this pattern improves our ability to introduce new discount rules, extend the code base, to isolation test discount rules and promote the single responsibility principle. 
@@ -71,6 +72,8 @@ Spring Boot automatically detects a number of file types from the classpath incl
 A test suite has been created that will run core tests to verify the currently installed discount rules and processing against multiple rules.
 
 Tests intentionally do not use the in memory database as this is not recommended and instead use stubbed data.
+
+Additional unit test should be added to test services layer at a later date using a mocking framework such as Mockito.
 
 
 ## Code Coverage
