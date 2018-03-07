@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Product {
@@ -15,9 +17,12 @@ public class Product {
 	@Id @GeneratedValue
 	private Long id;
 	
+	@Size(min=2)
 	@Column(nullable = false, name = "product_name", unique = true)
 	private String name;
 	
+	@DecimalMin("0.0")
+	@DecimalMin("100000.0")
 	@Column(nullable = false, name = "unit_price", scale=2 )
 	private BigDecimal unitPrice;
 	

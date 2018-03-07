@@ -1,6 +1,6 @@
 package org.shopping.cart;
 
-public class ShoppingCartException extends Exception {
+public class ShoppingCartException extends RuntimeException {
 	
 	/**
 	 * 

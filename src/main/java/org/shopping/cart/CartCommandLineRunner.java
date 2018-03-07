@@ -13,6 +13,7 @@ import org.shopping.cart.domain.Product;
 import org.shopping.cart.domain.ShoppingCart;
 import org.shopping.cart.service.ProductService;
 import org.shopping.cart.service.ShoppingCartService;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -26,6 +27,9 @@ import org.springframework.stereotype.Component;
  */
 @Component
 class CartCommandLineRunner implements CommandLineRunner{
+	
+	
+	@Autowired Logger log;
 	
 	@Autowired ProductService prodService;
 	
@@ -53,9 +57,9 @@ class CartCommandLineRunner implements CommandLineRunner{
 					}
 					else {
 						
-						Product product = prodService.findByName(arg);
+						Optional<Product> product = prodService.findByName(arg);
 						
-						shoppingCart.addCartItem(new CartItem(product));
+						if(product.isPresent()) shoppingCart.addCartItem(new CartItem(product.get()));
 		
 					}
 		}
