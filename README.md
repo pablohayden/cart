@@ -43,16 +43,27 @@ Total: £1.30
 
 ## Motivation
 
-Project was implemented using Java 8 and uses the spring boot framework with JPA/Hibernate and a H2 database.
-The H2 console is registered at http://localhost:8080/console which can be accessed to see the tables and underlying generated data schema & data.
+Project was implemented using Java 8 and uses the Spring Boot and is tested using pure JUnit.
+
+1. Note on Streaming API - project the Streaming API feature introduced in Java8 to demonstrate the collection filtering, grouping and performing anonymous functional actions on a collection. Incredible powerful feature but in most cases streaming is not going to perform as well as using standard iterators/for-loops and this would need to be considered for a production release. Also readability to some may be reduced.
+
+2. Note on the use of Spring Boot - using Spring Boot was unnecessary to fill the brief but using it means that we can quickly prototype DB integration and expose a RESTFUL web service in a very short space of time which makes this application far more useful.
+- Spring Boot initilizes the JPA using annotations.
+- Initializes all components by scanning the current classpath @
+- Spring Annotations are preferred in this case as it's a relatively small application and DAO file structure helps to identify relevant spring stereotypes & JPA repositories.
+- Spring Boot has a convenience utility that loads a default properties file from the class-path application.properities. 
+  Properties that have traditionally been maintained in separate file (persistence.xml and hibernate.cfg.xml are all now configured within the one place.
+  Logging & tomcat properties can also be configured within here.
+- CartCommandLineRunner is a Spring component interface that spring will invoke at run time and basically wraps the main method of the application. It's a convenience method that supports multiple runtime instances.
+
+3. Note on H2 DB - The in memory database is used to prototype database integration. The H2 console is registered at http://localhost:8080/console which can be accessed to see the tables and underlying generated data schema & data.
 Entity tables are automatically generated using JPA/Hibernate create/drop table option during start up.
+Spring Boot automatically detects a number of file types from the classpath including data.sql, which contains an SQL data file to generate the product types.
 
-It uses the Streaming API feature introduced in Java8 to demonstrate the collection filtering, grouping and performing anonymous functionally actions on a collection.
-In most cases streaming is not going to perform as well as using standard iterators/forloops and this would need to be considered for a production release.
 
-Note on Patterns - Factory/Command/Strategy pattern mix that allows us to apply different discount rules sets RuleCalculator to a shopping cart and to generate different RuleCalculator using the Factory method.
+4. Note on Patterns - Factory/Command/Strategy pattern mix that allows us to apply different discount rules sets RuleCalculator to a shopping cart and to generate different RuleCalculator using the Factory method. Using this pattern improves our ability to introduce new discount rules, extend the code base, to isolation test discount rules and promote the single responsibility principle. 
 
-Note on the use of Spring Boot - using springboot was unnecessary to fill the brief but using it means that we can quickly prototype DB integration and expose a RESTFUL web service in a very short space of time.
+
 
 ## Tests
 
