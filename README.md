@@ -2,6 +2,7 @@
 
 A small shopping cart application that accept exposes a REST API.
 
+Testing branch
 
 Processing requirements
 
