@@ -1,9 +1,10 @@
-# cart
+# Shopping Cart Application
 
 A small shopping cart application that accepts a number of shopping cart items and calculates totals.
 Discounts can be applied to products in the form of rules.
 
 Processing requirements
+
 The goods that can be purchased, which are all priced in GBP, are:
 - Soup – 65p per tin
 - Bread – 80p per loaf
@@ -15,14 +16,11 @@ Current special offers are:
 - Buy 2 tins of soup and get a loaf of bread for half price
 
 
-
 ## Code Example
 
-/* Application can be launched using...
+Application can be launched using...
 
 org.shopping.cart.ShoppingCartApplication BasketName Apples Milk Bread
-
-*/
 
 
 The program should accept a list of items in the basket and output the subtotal, the special offer discounts and the final
@@ -50,12 +48,14 @@ The H2 console is registered at http://localhost:8080/console and tables are aut
 Spring Boot is unneccessary to fill the brief but is included to demonstrate database prototyping techniques and to potentially expose a REST API.
 
 
-## Installation
-
-
 ## Tests
 
 A test suite has been created that will run core tests to verify the currently installed discount rules and processing against multiple rules.
 
 Tests intentionally do not use the in memory database as this is not recommended and instead use stubbed data.
+
+
+## Code Coverage
+
+Code coverage report has been included as part of the maven test goal and will generate a Jacoco code coverage report which is output to target/site/jacoco
 
