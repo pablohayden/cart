@@ -1,0 +1,37 @@
+CREATE TABLE customer (
+    id   INTEGER      NOT NULL AUTO_INCREMENT,
+    first_name VARCHAR(128) NOT NULL,
+    last_name VARCHAR(128) NOT NULL,
+    city VARCHAR(128) NOT NULL,
+    country VARCHAR(128) NOT NULL,
+    phone VARCHAR(128) NOT NULL,
+    email VARCHAR(128) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE cart (
+    id   INTEGER      NOT NULL AUTO_INCREMENT,
+    cart_name VARCHAR(128) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE product (
+    id   INTEGER      NOT NULL AUTO_INCREMENT,
+    product_name VARCHAR(50) NOT NULL,
+    supplierId int,
+    unitPrice decimal (12,2),
+    discount_id int,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE order_item (
+    id   INTEGER      NOT NULL AUTO_INCREMENT,
+    product_id VARCHAR(128) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE discount (
+    id   INTEGER      NOT NULL AUTO_INCREMENT,
+    discount_type 
+    PRIMARY KEY (id)
+);
