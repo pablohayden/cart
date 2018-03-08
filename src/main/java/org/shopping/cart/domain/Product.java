@@ -11,9 +11,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 public class Product {
-	
-	
-	
+		
 	@Id @GeneratedValue
 	private Long id;
 	

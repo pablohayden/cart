@@ -1,5 +1,6 @@
 package org.shopping.cart.rest;
 
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
@@ -12,6 +13,8 @@ import org.shopping.cart.service.ProductNotFoundException;
 import org.shopping.cart.service.ProductService;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,26 +31,43 @@ public class ProductController {
 	@Autowired Logger log;
 	
 	@Autowired ProductService productService;
+
 	
 	@PostConstruct	
 	public void init() throws Exception {
 		log.info("Initializing Rest Controller...");
 	}
 	
+	// HATEOAS - HyperMedia As The Engine Of Application State - Expose additional information to the REST responses
+	
 	@GetMapping("/products")
 	public List<Product> getAllProducts(){
 		
 //		log.info());
 		return productService.findAll();
+		
+		
 	}
 	
 	@GetMapping("/products/{id}")
-	public Product getProductById(@PathVariable long id){
+	public Resource<Product> getProductById(@PathVariable long id){
 		
 		
 		Optional<Product> product = productService.findById(id);
 			
-		if(product.isPresent()) return product.get();
+		if(product.isPresent()) {
+
+
+			Resource<Product> resource = new Resource<Product>(product.get());
+			
+			ControllerLinkBuilder linkTo = linkTo(methodOn(this.getClass()).getAllProducts());
+			
+			resource.add(linkTo.withRel("all-products"));
+			
+			return resource;
+			
+//			return product.get();
+		}
 		else {
 			// throws unchecked exception that is handled by the Spring REST Controller interfaces to generate specific HTTP response type
 			throw new ProductNotFoundException(id); 
@@ -84,9 +104,9 @@ public class ProductController {
 		Optional<Product> product = productService.findById(id);
 			
 		if(product.isPresent()) {
-//			return product.get(id);
 			
 			return ResponseEntity.noContent().build();
+			
 		}
 		else {
 			// throws unchecked exception that is handled by the Spring REST Controller interfaces to generate specific HTTP response type
