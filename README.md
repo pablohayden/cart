@@ -2,7 +2,7 @@
 
 A small shopping cart application that accept exposes a REST API.
 
-Testing branch
+REST API Supports Product API Only at the moment. 
 
 Processing requirements
 
@@ -63,6 +63,8 @@ Entity tables are automatically generated using JPA/Hibernate create/drop table 
 Spring Boot automatically detects a number of file types from the classpath including data.sql, which contains an SQL data file to generate the product types found [here](https://github.com/pablohayden/cart/tree/master/src/main/resources).
 
 4. Note on Patterns - Factory/Command/Strategy pattern mix that allows us to apply different discount rules sets RuleCalculator to a shopping cart and to generate different RuleCalculator using the Factory method. Using this pattern improves our ability to introduce new discount rules, extend the code base, to isolation test discount rules and promote the single responsibility principle. 
+
+5. REST API - exposes a set of RESTFUL interfaces.
 
 
 
